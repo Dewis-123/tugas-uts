@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>Cyborg - Awesome HTML5 Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="stylesheets/fontawesome.css">
+  <link rel="stylesheet" href="stylesheets/templatemo-cyborg-gaming.css">
+  <link rel="stylesheet" href="stylesheets/owl.css">
+  <link rel="stylesheet" href="stylesheets/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <!--
+
+TemplateMo 579 Cyborg Gaming
+
+https://templatemo.com/tm-579-cyborg-gaming
+
+-->
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="/" class="logo">
+              <img src="images/logo.png" alt="">
+            </a>
+            <!-- ***** Logo End ***** -->
+            
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="browse">Browse</a></li>
+              <li><a href="streams" class="active">Streams</a></li>
+              <li><a href="profile">Profile <img src="images/profile-header.jpg" alt=""></a></li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Featured Games Start ***** -->
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="featured-games header-text">
+                <div class="heading-section">
+                  <h4><em>Most</em> Educator Viewed</h4>
+                </div>
+                <div class="owl-features owl-carousel">
+                  <% for(let i=0; i < educatorViews.length; i++){ %>
+                    <div class="item">
+                      <div class="thumb">
+                        <img src=<%= educatorViews[i].image %> alt="">
+                        <div class="hover-effect">
+                          <h6>
+                            <%= educatorViews[i].category %>
+                          </h6>
+                        </div>
+                      </div>
+                      <h4>
+                        <%= educatorViews[i].name %><br><span>
+                            <%= educatorViews[i].lastStream %>
+                          </span>
+                      </h4>
+                      <ul>
+                        <li><i class="fa fa-eye"></i>
+                          <%= educatorViews[i].views %>
+                        </li>
+                      </ul>
+                    </div>
+                  <% } %>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="top-streamers">
+                <div class="heading-section">
+                  <h4><em>Top</em> Streamers</h4>
+                </div>
+                <ul>
+                  <% for(let i=0; i < topStreamer.length; i++){%>
+                    <li>
+                      <span>0<%= i+1%></span>
+                      <img src=<%= topStreamer[i].profileImage %> alt=""
+                        style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
+                      <% if(topStreamer[i].verified){ %>
+                        <h6><i class="fa fa-check"></i> <%= topStreamer[i].name %></h6>
+                      <% } else { %>
+                        <h6><%= topStreamer[i].name %></h6>
+                      <% } %>
+                      <% if(topStreamer[i].following){ %>
+                        <div class="main-border-button" id="btn<%=topStreamer[i].id %>">
+                          <a href="#"><i class="fa fa-check"></i> Following</a>
+                        </div>
+                      <% } else { %>
+                        <div class="main-button" id="btn<%=topStreamer[i].id %>" onclick="startFollowing('<%=topStreamer[i].id %>')">
+                          <a href="#" id="lbl<%=topStreamer[i].id %>">Follow</a>
+                        </div>
+                      <% } %>
+                      
+                    </li>
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Featured Games End ***** -->
+
+          <!-- ***** Live Stream Start ***** -->
+          <div class="live-stream">
+            <div class="col-lg-12">
+              <div class="heading-section">
+                <h4><em>Current</em> Live Stream</h4>
+              </div>
+            </div>
+            <div class="row">
+              <% for(let i = 0; i < currentLiveStream.length; i++ ){%>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="item">
+                    <div class="thumb">
+                      <img src=<%= currentLiveStream[i].image %> alt="">
+                      <div class="hover-effect">
+                        <div class="content">
+                          <div class="live">
+                            <a href="#"><%= currentLiveStream[i].status %></a>
+                          </div>
+                          <ul>
+                            <li><a href="#"><i class="fa fa-eye"></i> <%= currentLiveStream[i].viewed %></a></li>
+                            <li><a href="#"><i class="fa fa-book"></i> <%= currentLiveStream[i].category %></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="down-content">
+                      <div class="avatar">
+                        <img src=<%= currentLiveStream[i].profileImage %> alt="" style="max-width: 46px; border-radius: 50%; float: left;">
+                      </div>
+                      <% if(currentLiveStream[i].verified){ %>
+                        <span><i class="fa fa-check"></i> <%= currentLiveStream[i].name %></span>
+                      <% } else { %>
+                        <span> <%= currentLiveStream[i].name %></span>
+                      <% } %>
+                      
+                      <h4><%= currentLiveStream[i].title %></h4>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+              
+             
+              <div class="col-lg-12">
+                <div class="main-button">
+                  <a href="streams">Load More Streams</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Live Stream End ***** -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 Company. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="javascripts/isotope.min.js"></script>
+  <script src="javascripts/owl-carousel.js"></script>
+  <script src="javascripts/tabs.js"></script>
+  <script src="javascripts/popup.js"></script>
+  <script src="javascripts/custom.js"></script>
+
+
+</body>
+
+</html>
